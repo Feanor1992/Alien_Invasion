@@ -1,5 +1,6 @@
 import sys
 import pygame
+from settings import Settings
 import ctypes
 
 
@@ -13,7 +14,8 @@ class AlienInvasion:
         # user32 = ctypes.windll.user32
         # screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
         # self.screen = pygame.display.set_mode(screensize)
-        self.screen = pygame.display.set_mode((1280, 800))
+        self.settings = Settings()
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption('Alien Invasion')
 
         # assigning a background colour
@@ -27,7 +29,7 @@ class AlienInvasion:
                 if event.type == pygame.QUIT:
                     sys.exit()
 
-            self.screen.fill(self.bg_color)
+            self.screen.fill(self.settings.bg_color)
 
             # displaying the last drawn screen
             pygame.display.flip()
